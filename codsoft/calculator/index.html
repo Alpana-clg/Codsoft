@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <span>
+      <img src="logo.png" />
+      <h2>Calculator</h2>
+    </span>
+    <form id="calculatorForm">
+      <label for="n1">Operant 1:</label>
+      <input type="number" id="n1" name="n1" /><br /><br />
+
+      <label for="n2">Operant 2:</label>
+      <input type="number" id="n2" name="n2" /><br /><br />
+
+      <button type="button" id="addBtn">+</button>
+      <button type="button" id="subtractBtn">-</button>
+      <button type="button" id="multiplyBtn">X</button>
+      <button type="button" id="divideBtn">/</button>
+      <br /><br />
+
+      <button type="reset" id="resetBtn">Reset</button>
+    </form>
+
+    <script>
+      document.getElementById("addBtn").addEventListener("click", function () {
+        calculate("add");
+      });
+
+      document
+        .getElementById("subtractBtn")
+        .addEventListener("click", function () {
+          calculate("subtract");
+        });
+
+      document
+        .getElementById("multiplyBtn")
+        .addEventListener("click", function () {
+          calculate("multiply");
+        });
+
+      document
+        .getElementById("divideBtn")
+        .addEventListener("click", function () {
+          calculate("divide");
+        });
+
+      function calculate(operation) {
+        var n1 = parseFloat(document.getElementById("n1").value);
+        var n2 = parseFloat(document.getElementById("n2").value);
+        var result;
+
+        switch (operation) {
+          case "add":
+            result = n1 + n2;
+            break;
+          case "subtract":
+            result = n1 - n2;
+            break;
+          case "multiply":
+            result = n1 * n2;
+            break;
+          case "divide":
+            if (n2 !== 0) {
+              result = n1 / n2;
+            } else {
+              alert("Cannot divide by zero!");
+              return;
+            }
+            break;
+          default:
+            alert("Invalid operation!");
+            return;
+        }
+
+        alert("Result: " + result);
+      }
+    </script>
+  </body>
+</html>
